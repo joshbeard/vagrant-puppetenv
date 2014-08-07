@@ -1,0 +1,83 @@
+boxes:
+  puppetlabs/centos-6.5-64-nocm: "puppetlabs/centos-6.5-64-nocm"
+nodes:
+  xmaster:
+    hostname: master.vagrant.vm
+    box: puppetlabs/centos-6.5-64-nocm
+    memory: 1024
+    cpus: 1
+    networks:
+      - private_network:
+          ip: 192.168.137.10
+    provisioners:
+      - shell:
+          path: puppet/provision.sh
+          arguments:
+            - value: master.txt
+    synced_folders:
+      - host: .
+        guest: /vagrant
+  gitlab:
+    hostname: gitlab.vagrant.vm
+    box: puppetlabs/centos-6.5-64-nocm
+    memory: 1024
+    cpus: 1
+    networks:
+      - private_network:
+          ip: 192.168.137.11
+    provisioners:
+      - shell:
+          path: puppet/provision.sh
+          arguments:
+            - value: agent.txt
+    synced_folders:
+      - host: .
+        guest: /vagrant
+  venus:
+    hostname: venus.vagrant.vm
+    box: puppetlabs/centos-6.5-64-nocm
+    memory: 512
+    cpus: 1
+    networks:
+      - private_network:
+          ip: 192.168.137.12
+    provisioners:
+      - shell:
+          path: puppet/provision.sh
+          arguments:
+            - value: agent.txt
+    synced_folders:
+      - host: .
+        guest: /vagrant
+  pluto:
+    hostname: pluto.vagrant.vm
+    box: puppetlabs/centos-6.5-64-nocm
+    memory: 512
+    cpus: 1
+    networks:
+      - private_network:
+          ip: 192.168.137.13
+    provisioners:
+      - shell:
+          path: puppet/provision.sh
+          arguments:
+            - value: agent.txt
+    synced_folders:
+      - host: .
+        guest: /vagrant
+  xagent:
+    hostname: xagent.vagrant.vm
+    box: puppetlabs/centos-6.5-64-nocm
+    memory: 512
+    cpus: 1
+    networks:
+      - private_network:
+          ip: 192.168.137.14
+    provisioners:
+      - shell:
+          path: puppet/provision.sh
+          arguments:
+            - value: agent.txt
+    synced_folders:
+      - host: .
+        guest: /vagrant
