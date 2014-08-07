@@ -146,10 +146,12 @@ The example repos in `code/` need to be initialized as Git repositories.
 ```shell
 cd control
 git init
+git checkout -b production
 git add .
 git commit -m "Initial commit"
 git remote add origin git@192.168.137.11:unix/control.git
-git push --all origin -u
+git push origin production
+git push origin production:master  # See note below about this
 ```
 
 ```shell
