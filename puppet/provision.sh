@@ -53,8 +53,9 @@ if [ "$1" == 'master.txt' ]; then
   /opt/puppet/bin/gem install r10k
 
   ## Use the control repo for bootstrapping
-  git clone /vagrant/code/control /tmp/control
+  cp -r /vagrant/code/control /tmp/control
   cd /tmp/control
+  git init && git add . && git commit -m "Initial commit"
   /opt/puppet/bin/r10k puppetfile install -v
 
   ## Run a Puppet apply against the role in the copy of the control repo so we
