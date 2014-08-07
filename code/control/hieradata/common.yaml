@@ -1,0 +1,17 @@
+---
+# For our PHP plutoweb
+profile::plutoweb::site_name: 'sample_site'
+profile::plutoweb::docroot: '/var/www/html'
+profile::plutoweb::port: '80'
+profile::plutoweb::user: 'plutoweb'
+profile::plutoweb::group: 'plutoweb'
+
+# For our Tomcat app venus
+profile::venus::catalina_base: '/usr/share/tomcat7'
+profile::venus::catalina_home: '/home/tomcat/venus'
+profile::venus::source_url: 'http://apache.tradebit.com/pub/tomcat/tomcat-7/v7.0.55/bin/apache-tomcat-7.0.55.tar.gz'
+profile::venus::user: 'tomcat'
+profile::venus::group: 'tomcat'
+profile::venus::java_home: '/usr/lib/jvm/jre'
+profile::venus::war_url: 'https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war'
+profile::venus::service_name: 'venus'
