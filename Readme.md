@@ -240,3 +240,9 @@ it's present is because GitLab has HEAD pointint to "master" when a new repo
 is created, and trying to push a masterless-repo there causes clones to fail
 until HEAD gets changed (requiring you to change the default branch via the
 GitLab interface).
+
+## Other
+
+This makes use of Greg Sarjeant's [data-driven-vagrantfile](https://github.com/gsarjeant/data-driven-vagrantfile)
+
+No Vagrant plugins are required.
