@@ -1,5 +1,25 @@
-forge 'http://forge.puppetlabs.com'
+###############################################################################
+## Refer to https://github.com/adrienthebo/r10k/blob/master/doc/puppetfile.mkd
+## for information on what this file is and how to use it.
+##
+## This file lists all of the modules that should be made available to each
+## Puppet environment.  Provide a source for them and an optional 'ref'
+## The 'ref' can be a branch, tag, or commit hash.
+##
+## Modules can be installed using the Puppet module tool.
+## Consider http(s) proxies when installing modules.
+## If no version is specified the latest version available at the time will be
+## installed, and will be kept at that version.
+##   mod 'puppetlabs/apache'
+## If a version is specified then that version will be installed.
+##   mod 'puppetlabs/apache', '0.10.0'
+## If the version is set to :latest then the module will be always updated to
+## the latest version available.
+##   mod 'puppetlabs/apache', :latest
+##
+###############################################################################
 
+forge 'http://forge.puppetlabs.com'
 
 #mod 'motd',
 #  :git => 'git@gitlab.vagrant.vm:unix/motd.git'
@@ -12,6 +32,9 @@ mod 'apache',
 
 mod 'tomcat',
   :git => 'https://github.com/puppetlabs/puppetlabs-tomcat.git'
+
+mod 'haproxy',
+  :git => 'https://github.com/puppetlabs/puppetlabs-haproxy.git'
 
 
 ###############################################################################
@@ -27,7 +50,8 @@ mod 'inifile',
   :git => 'https://github.com/puppetlabs/puppetlabs-inifile.git'
 
 mod 'concat',
-  :git => 'https://github.com/puppetlabs/puppetlabs-concat.git'
+  :git => 'https://github.com/puppetlabs/puppetlabs-concat.git',
+  :ref => '1.1.1'
 
 mod 'hiera',
   :git => 'https://github.com/hunner/puppet-hiera.git'
@@ -50,10 +74,9 @@ mod 'git',
 mod 'make',
   :git => 'https://github.com/Element84/puppet-make.git'
 
-# Puppetforge modules
 mod 'r10k',
   :git => 'https://github.com/acidprime/r10k.git',
-  :ref => 'v2.2.1'
+  :ref => 'v2.3.0'
 
 mod 'java',
   :git => 'https://github.com/puppetlabs/puppetlabs-java.git'

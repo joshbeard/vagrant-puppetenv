@@ -1,7 +1,7 @@
 boxes:
   puppetlabs/centos-6.5-64-nocm: "puppetlabs/centos-6.5-64-nocm"
 nodes:
-  xmaster:
+  master:
     hostname: master.vagrant.vm
     box: puppetlabs/centos-6.5-64-nocm
     memory: 1024
@@ -13,7 +13,8 @@ nodes:
       - shell:
           path: puppet/provision.sh
           arguments:
-            - value: master.txt
+            - value: fullmaster.txt
+            - value: 'role::puppet::ca'
     synced_folders:
       - host: .
         guest: /vagrant
@@ -65,8 +66,8 @@ nodes:
     synced_folders:
       - host: .
         guest: /vagrant
-  xagent:
-    hostname: xagent.vagrant.vm
+  agent1:
+    hostname: agent1.vagrant.vm
     box: puppetlabs/centos-6.5-64-nocm
     memory: 512
     cpus: 1
@@ -78,6 +79,39 @@ nodes:
           path: puppet/provision.sh
           arguments:
             - value: agent.txt
+    synced_folders:
+      - host: .
+        guest: /vagrant
+  haproxy:
+    hostname: haproxy.vagrant.vm
+    box: puppetlabs/centos-6.5-64-nocm
+    memory: 512
+    cpus: 1
+    networks:
+      - private_network:
+          ip: 192.168.137.20
+    provisioners:
+      - shell:
+          path: puppet/provision.sh
+          arguments:
+            - value: agent.txt
+    synced_folders:
+      - host: .
+        guest: /vagrant
+  puppetmaster1:
+    hostname: puppetmaster1.vagrant.vm
+    box: puppetlabs/centos-6.5-64-nocm
+    memory: 1024
+    cpus: 1
+    networks:
+      - private_network:
+          ip: 192.168.137.21
+    provisioners:
+      - shell:
+          path: puppet/provision.sh
+          arguments:
+            - value: master.txt
+            - value: 'role::puppet::master'
     synced_folders:
       - host: .
         guest: /vagrant
