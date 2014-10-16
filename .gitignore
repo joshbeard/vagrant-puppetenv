@@ -15,3 +15,5 @@ Icon?
 
 install_log*
 puppet-enterprise-*
+
+code/control/modules
